@@ -6,10 +6,10 @@
 'use strict'
 
 const mongoose = require('mongoose');
- 
-const CitiesSchema = mongoose.model('CitiesSchema', new mongoose.Schema({
-    name: String
-}));
- 
+const Schema = mongoose.Schema;
 
-exports.CitiesSchema = CitiesSchema;
+const CitiesSchema = new Schema({
+    name: String
+});
+ 
+module.exports = mongoose.model('CitiesSchema', CitiesSchema);

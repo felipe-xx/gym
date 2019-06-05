@@ -4,11 +4,13 @@
 
 'use strict'
 
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cities = require('./routes/Cities');
-const users = require('./routes/Users');
+const mongoose   = require('mongoose');
+const cities     = require('./routes/Cities');
+const users      = require('./routes/Users');
+const places     = require('./routes/Places');
+
 
 
 /*
@@ -16,8 +18,9 @@ const users = require('./routes/Users');
  */
 
 
-const CitiesSchema = require('./models/CitiesSchema');
-const UsersSchema = require('./models/UsersSchema');
+const CitiesSchema  =    require('./models/CitiesSchema');
+const UsersSchema   =    require('./models/UsersSchema');
+const PlacesSchema  =    require('./models/PlacesSchema');
 
 ////////////////////////////////////////////
 ////////////////////////////////////////////
@@ -35,8 +38,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-
-
 mongoose.connect('mongodb://localhost:27017/nopain', (err, res) =>{
     if(err) {
         return console.log(`Error conectando a DB ${err}`);
@@ -50,9 +51,10 @@ mongoose.connect('mongodb://localhost:27017/nopain', (err, res) =>{
 
 app.use('/api/cities', cities);
 app.use('/api/users', users);
+app.use('/api/places', places);
 
 // Carga una vista HTML simple donde irá nuestra Single App Page
 // Angular Manejará el Frontend
 app.get('*', function(req, res) {						
-    res.sendfile('./index.html');				
+    //res.sendfile('./index.html');				
 });

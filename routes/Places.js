@@ -1,33 +1,33 @@
-const { CitiesSchema } = require('../models/PlacesSchema');
+const { PlacesSchema } = require('../models/PlacesSchema');
 const express = require('express');
 const routerPlaces = express.Router();
  
 routerPlaces.post('/', async (req, res) => {
 
     place = new PlacesSchema({
-        name: req.body.name
+        name  :    req.body.name,
+        idCiti:    req.body.idCiti
     });
     await place.save();
-    console.log('Siiii');
+    console.log('Siiii PlacesSchema');
     res.send(place);
 });
 
 // Aañadimos los listeners
 
 routerPlaces.get('/', (req, res) => {
-    res.send(200, {cities: []})
+
 });
 
-routerPlaces.get('/:placeId', (req, res) =>{
+routerPlaces.get('/:Id', (req, res) =>{
     
 });
 
-
-routerPlaces.put('/:placeId', (req, res) => {
+routerPlaces.put('/:userId', (req, res) => {
     
 });
 
-routerPlaces.delete('/:placeId', (req, res) => {
+routerPlaces.delete('/:userId', (req, res) => {
     
 });
 

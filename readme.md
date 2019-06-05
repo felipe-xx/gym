@@ -11,3 +11,9 @@ nodemon
 -- npm i -D nodemon
 uuid
 -- npm install uuid
+jwt
+npm install --save jwt-simple
+bcrypt-nodejs
+- npm i -S bcrypt-nodejs
+moment
+- npm install -save moment

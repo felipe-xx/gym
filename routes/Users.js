@@ -1,6 +1,12 @@
-const { UsersSchema } = require('../models/UsersSchema');
-const express = require('express');
-const routerUsers = express.Router();
+/* 
+ * Felipe Cáceres
+ * Routes {Users}
+ */
+
+const UsersSchema    = require('../models/UsersSchema');
+const express         = require('express');
+const routerUsers     = express.Router();
+const auth            = require('../controllers/auth');
  
 routerUsers.post('/', async (req, res) => {
 
@@ -16,6 +22,10 @@ routerUsers.post('/', async (req, res) => {
     res.send(user);
 });
 
+
+routerUsers.post('/singUp/', auth.singUp, (req, res) => {
+
+});
 // Aañadimos los listeners
 
 routerUsers.get('/', (req, res) => {

@@ -1,6 +1,13 @@
-const { CitiesSchema } = require('../models/CitiesSchema');
-const express = require('express');
-const routerCities = express.Router();
+/* 
+ * Felipe Cáceres
+ * Routes {Cities}
+ */
+
+
+const CitiesSchema      = require('../models/CitiesSchema');
+const express           = require('express');
+const routerCities      = express.Router();
+const auth              = require('../middelwares/authentication')
  
 routerCities.post('/', async (req, res) => {
 
@@ -8,26 +15,37 @@ routerCities.post('/', async (req, res) => {
         name: req.body.name
     });
     await citie.save();
-    console.log('Siiii');
     res.send(citie);
 });
 
 // Aañadimos los listeners
 
-routerCities.get('/api/cities/', (req, res) => {
-    res.send(200, {cities: []})
-});
-
-routerCities.get('/api/cities/:citiId', (req, res) =>{
+routerCities.get('/', auth, (req, res) => {
+    CitiesSchema.find({}, (err, cities) => {
+        if(err) return res.status(500).send({message: `Error en la petición. ${err}`});
+        if(!cities) return res.status(404).send({message: 'No se encontraron la ciudades'});
+        res.status(200).send({cities: cities});
+    });
     
 });
 
 
-routerCities.put('/api/cities/:citiId', (req, res) => {
+routerCities.get('/:citiId', auth, (req, res) =>{
+    let citiId = req.params.citiId;
+    CitiesSchema.findById(citiId, (citi, err) => {
+        if(err) return res.status(500).send({message: `Error en la petición. ${err}`});
+        if(!citi) return res.status(404).send({message: 'No se encontró la ciudad'});
+        
+        res.status(200).send({citi: citi});
+    });
+});
+
+
+routerCities.put('/:citiId', (req, res) => {
     
 });
 
-routerCities.delete('/api/cities/:citiId', (req, res) => {
+routerCities.delete('/:citiId', (req, res) => {
     
 });
 
