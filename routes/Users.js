@@ -3,7 +3,7 @@
  * Routes {Users}
  */
 
-const UsersSchema    = require('../models/UsersSchema');
+const UsersSchema     = require('../models/UsersSchema');
 const express         = require('express');
 const routerUsers     = express.Router();
 const auth            = require('../controllers/auth');
@@ -26,7 +26,9 @@ routerUsers.post('/', async (req, res) => {
 routerUsers.post('/singUp/', auth.singUp, (req, res) => {
 
 });
-// Aañadimos los listeners
+
+routerUsers.post('/singIn/', auth.singIn);
+
 
 routerUsers.get('/', (req, res) => {
 
@@ -40,9 +42,7 @@ routerUsers.put('/:userId', (req, res) => {
     
 });
 
-routerUsers.delete('/:userId', (req, res) => {
-    
-});
+routerUsers.delete('/:userId', (req, res) => {});
 
  
 module.exports = routerUsers;

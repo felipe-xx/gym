@@ -3,11 +3,10 @@
  * Routes {Cities}
  */
 
-
 const CitiesSchema      = require('../models/CitiesSchema');
 const express           = require('express');
 const routerCities      = express.Router();
-const auth              = require('../middelwares/authentication')
+const auth              = require('../middelwares/authentication');
  
 routerCities.post('/', async (req, res) => {
 
@@ -25,8 +24,7 @@ routerCities.get('/', auth, (req, res) => {
         if(err) return res.status(500).send({message: `Error en la petición. ${err}`});
         if(!cities) return res.status(404).send({message: 'No se encontraron la ciudades'});
         res.status(200).send({cities: cities});
-    });
-    
+    });    
 });
 
 
@@ -40,14 +38,10 @@ routerCities.get('/:citiId', auth, (req, res) =>{
     });
 });
 
-
-routerCities.put('/:citiId', (req, res) => {
-    
-});
+routerCities.put('/:citiId', (req, res) => {});
 
 routerCities.delete('/:citiId', (req, res) => {
     
 });
 
- 
 module.exports = routerCities;

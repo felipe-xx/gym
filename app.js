@@ -7,6 +7,9 @@
 const express    = require('express');
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
+const handleBars = require('express-handlebars');
+const router     = express.Router();
+
 const cities     = require('./routes/Cities');
 const users      = require('./routes/Users');
 const places     = require('./routes/Places');
@@ -31,11 +34,19 @@ const app = express();
 const port = process.env.PORT || 3000;
 const server = require('http').Server(app);
 
+
+
 // Para parsear el cuerpo de los mensajes que se obtienen
 // desde el API REST
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(router);
+app.engine('.hbs', handleBars({
+    defaultlayout: 'default',
+    extname      : 'hbs'
+}));
+app.set('view engine', '.hbs');
 
 
 mongoose.connect('mongodb://localhost:27017/nopain', (err, res) =>{
@@ -55,6 +66,6 @@ app.use('/api/places', places);
 
 // Carga una vista HTML simple donde irá nuestra Single App Page
 // Angular Manejará el Frontend
-app.get('*', function(req, res) {						
-    //res.sendfile('./index.html');				
+app.get('/login', (req, res) => {						
+    res.render('login');				
 });

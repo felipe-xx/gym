@@ -3,7 +3,7 @@
  * Service {token}
  */
 
-'use strict'
+'use strict';
 
 const jwt        = require('jwt-simple');
 const moment     = require('moment');
@@ -15,11 +15,9 @@ function createToken(user){
         sub: user.id,
         iat: moment().unix(),
         exp: moment().add(15, 'days').unix()
-    };
-    
+    };   
     return jwt.encode(payload, config.CONFIG_TOKEN);
 }
-
 
 function decodeToken(token){
     const decode = new Promise((resolve, reject) => {
@@ -48,6 +46,6 @@ function decodeToken(token){
 
 
 module.exports = {
-  createToken,
-  decodeToken
+    createToken,
+    decodeToken
 };

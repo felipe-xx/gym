@@ -26,7 +26,8 @@ function singUp(req, res){
     });
 }
 function singIn(req, res){
-    User.find({email: req.body.email}, (err, user) => {
+
+    UsersSchema.findOne({ email: req.body.email }, (err, user) => {        
         if(err) return res.status(500).send({message: `Hubo un error: ${err}`});
         if(!user) return res.status(404).send({message: 'No existe el usuario'});
         
@@ -37,9 +38,6 @@ function singIn(req, res){
         });
     });
 }
-
-
-
 
 module.exports = {
     singUp,

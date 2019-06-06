@@ -1,0 +1,21 @@
+<form method="post" id="login">
+    <input type="email" id="email" placeholder="email" value="felipeoig@gmail.com" /><br>
+    <input type="password" id="password" placeholder="password" /><br>
+    <input type="submit" value="LogIn" />
+</form> 
+
+<script>
+    const fl = document.querySelector('#login');
+    const fd = new FormData(fl);
+    
+    fl.addEventListener('submit', event =>{
+        event.preventDefault();
+        console.log('---2', document.getElementById('email').value);
+        fetch('/api/users/singIn/',{
+            method: 'POST',
+            body: {email: document.getElementById('email').value, password: document.getElementById('password').value}
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+    });
+</script>
