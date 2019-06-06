@@ -1,7 +1,8 @@
 const { PlacesSchema } = require('../models/PlacesSchema');
 const express = require('express');
 const routerPlaces = express.Router();
- 
+const cors       = require('cors');
+
 routerPlaces.post('/', async (req, res) => {
 
     place = new PlacesSchema({

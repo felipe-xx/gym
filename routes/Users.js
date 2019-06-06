@@ -7,7 +7,8 @@ const UsersSchema     = require('../models/UsersSchema');
 const express         = require('express');
 const routerUsers     = express.Router();
 const auth            = require('../controllers/auth');
- 
+const cors       = require('cors');
+
 routerUsers.post('/', async (req, res) => {
 
     user = new UsersSchema({

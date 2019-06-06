@@ -6,6 +6,8 @@
 const services = require('../services/token');
 
 function isAuth(req, res, next){
+    
+    console.log(req.headers.authorization);
     if(!req.headers.authorization){
         return res.status(403).send({message: 'Usuario sin autorización'});
     }

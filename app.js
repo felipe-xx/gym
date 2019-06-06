@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const handleBars = require('express-handlebars');
 const router     = express.Router();
+const cors       = require('cors');
 
 const cities     = require('./routes/Cities');
 const users      = require('./routes/Users');
@@ -42,6 +43,8 @@ const server = require('http').Server(app);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(router);
+app.use(cors());
+
 app.engine('.hbs', handleBars({
     defaultlayout: 'default',
     extname      : 'hbs'
@@ -63,6 +66,9 @@ mongoose.connect('mongodb://localhost:27017/nopain', (err, res) =>{
 app.use('/api/cities', cities);
 app.use('/api/users', users);
 app.use('/api/places', places);
+
+// Configurar cabeceras y cors
+
 
 // Carga una vista HTML simple donde irá nuestra Single App Page
 // Angular Manejará el Frontend

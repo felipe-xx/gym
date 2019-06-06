@@ -7,9 +7,10 @@ const CitiesSchema      = require('../models/CitiesSchema');
 const express           = require('express');
 const routerCities      = express.Router();
 const auth              = require('../middelwares/authentication');
- 
-routerCities.post('/', async (req, res) => {
+const cors       = require('cors');
 
+routerCities.post('/',cors(), async (req, res) => {
+    console.log(req);
     citie = new CitiesSchema({
         name: req.body.name
     });
@@ -19,7 +20,7 @@ routerCities.post('/', async (req, res) => {
 
 // Aañadimos los listeners
 
-routerCities.get('/', auth, (req, res) => {
+routerCities.get('/', auth, cors(), (req, res) => {
     CitiesSchema.find({}, (err, cities) => {
         if(err) return res.status(500).send({message: `Error en la petición. ${err}`});
         if(!cities) return res.status(404).send({message: 'No se encontraron la ciudades'});
@@ -38,9 +39,9 @@ routerCities.get('/:citiId', auth, (req, res) =>{
     });
 });
 
-routerCities.put('/:citiId', (req, res) => {});
+routerCities.put('/:citiId', auth, (req, res) => {});
 
-routerCities.delete('/:citiId', (req, res) => {
+routerCities.delete('/:citiId',auth, (req, res) => {
     
 });
 
