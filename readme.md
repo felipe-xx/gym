@@ -27,7 +27,8 @@ Este proyecto está en angu [Angular CLI](https://github.com/angular/angular-cli
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Inicalice el proyecto con el comando `ng serve`. Ingrese a la URL `http://localhost:4200/`. 
+La aplicación va a redirigir automáticamanete 
 
 ## Code scaffolding
 

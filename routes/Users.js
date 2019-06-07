@@ -7,7 +7,7 @@ const UsersSchema     = require('../models/UsersSchema');
 const express         = require('express');
 const routerUsers     = express.Router();
 const auth            = require('../controllers/auth');
-const cors       = require('cors');
+const cors            = require('cors');
 
 routerUsers.post('/', async (req, res) => {
 
@@ -19,7 +19,6 @@ routerUsers.post('/', async (req, res) => {
         type:       req.body.type
     });
     await user.save();
-    console.log('Siiii UsersSchema');
     res.send(user);
 });
 

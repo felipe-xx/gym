@@ -7,15 +7,22 @@ const CitiesSchema      = require('../models/CitiesSchema');
 const express           = require('express');
 const routerCities      = express.Router();
 const auth              = require('../middelwares/authentication');
-const cors       = require('cors');
+const cors              = require('cors');
+const globlals          = require('../globals');
 
 routerCities.post('/',cors(), async (req, res) => {
-    console.log(req);
-    citie = new CitiesSchema({
-        name: req.body.name
-    });
-    await citie.save();
-    res.send(citie);
+    
+    console.log('---> ', globlals.userData.type);
+    if(globlals.userData.type == 1){
+        citie = new CitiesSchema({
+            name: req.body.name
+        });
+        await citie.save();
+        res.send(citie);
+    }else{
+        res.send('No tiene permisos para esta operación');
+    }
+    
 });
 
 // Aañadimos los listeners

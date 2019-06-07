@@ -13,7 +13,7 @@ const UsersSchema = new Schema({
     firstName   : String,
     lastName    : String,    
     email       : {type: String, unique: true, lowercase: true},
-    password    : {type: String, select: false},
+    password    : {type: String, select: true},
     singupDate  : {type: Date, default: Date.now() },
     lastLogin   : Date,
     type        : Number

@@ -10,6 +10,8 @@ const mongoose   = require('mongoose');
 const handleBars = require('express-handlebars');
 const router     = express.Router();
 const cors       = require('cors');
+const session    = require('express-session');
+
 
 const cities     = require('./routes/Cities');
 const users      = require('./routes/Users');
@@ -63,9 +65,14 @@ mongoose.connect('mongodb://localhost:27017/nopain', (err, res) =>{
     });
 });
 
+
+
+
 app.use('/api/cities', cities);
 app.use('/api/users', users);
 app.use('/api/places', places);
+
+
 
 // Configurar cabeceras y cors
 
