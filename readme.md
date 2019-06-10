@@ -1,26 +1,3 @@
-1. Instalar nodejs
-2. Instalar mongodb
-3. instalar express
-4. instalar mongoose
-
-El proyecto usa las librerias
-
-body-parser
--- npm i -S body-parser
-nodemon
--- npm i -D nodemon
-uuid
--- npm install uuid
-jwt
-npm install --save jwt-simple
-bcrypt-nodejs
-- npm i -S bcrypt-nodejs
-moment
-- npm install -save moment
-cors
-- npm install cors
-
-
 # Firecrud
 
 Este proyecto está en angu [Angular CLI](https://github.com/angular/angular-cli) version 8.
@@ -49,3 +26,26 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+1. Instalar nodejs
+2. Instalar mongodb
+3. instalar express
+4. instalar mongoose
+
+El proyecto usa las librerias
+
+body-parser
+-- npm i -S body-parser
+nodemon
+-- npm i -D nodemon
+uuid
+-- npm install uuid
+jwt
+npm install --save jwt-simple
+bcrypt-nodejs
+- npm i -S bcrypt-nodejs
+moment
+- npm install -save moment
+cors
+- npm install cors

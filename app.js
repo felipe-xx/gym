@@ -2,7 +2,7 @@
  * Felipe Cáceres
  */
 
-'use strict'
+'use strict';
 
 const express    = require('express');
 const bodyParser = require('body-parser');
@@ -71,7 +71,6 @@ mongoose.connect('mongodb://localhost:27017/nopain', (err, res) =>{
 app.use('/api/cities', cities);
 app.use('/api/users', users);
 app.use('/api/places', places);
-
 
 
 // Configurar cabeceras y cors
